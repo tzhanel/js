@@ -30,3 +30,11 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+img {
+  display: inline;
+  /* inline */
+  height: 150px;
+  opacity: 0.9;
+  /* visibility: hidden; */
+  margin: 20px 50px;
+  }
