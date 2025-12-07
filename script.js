@@ -61,22 +61,52 @@ const input = document.getElementById("input")
 //     // console.log("inserted", inputElement.value)
 // })
 // // const thirdParagraph = myParagraphs[2]
-btn.addEventListener("click", () => {
-    myParagraphs[1].classList.toggle("blue-background")
+// btn.addEventListener("click", () => {
+//     myParagraphs[1].classList.toggle("blue-background")
+// })
+
+// const addButton = document.getElementById("add")
+// const removeButton = document.getElementById("remove")
+// const list = document.getElementById("list")
+
+// addButton.addEventListener("click", () => {
+//     const listItem = document.createElement("li")
+//     listItem.textContent =  input.value || "New item"
+//     list.appendChild(listItem)
+// })
+
+// removeButton.addEventListener("click", () =>{
+//     if(list.lastChild) { //unorderedList.lastElementChild {
+//         list.removeChild(list.lastChild) //unoerderedList.LastElementChild.remove ()
+//     }
+// })
+
+const emojis = ["a", "b", "c"];
+const addCardBtn = document.getElementById("add-card")
+const cardsContainer = document.getElementById("cards")
+
+addCardBtn.addEventListener("click", () => {
+  const card = document.createElement("div")
+  card.className = "card-container"
+
+  // Math.random/Math.floor
+  const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)]
+
+  card.textContent = randomEmoji // random
+  cardsContainer.appendChild(card)
+
+  card.addEventListener("click", () => {
+    card.remove()
+  })
 })
 
-const addButton = document.getElementById("add")
-const removeButton = document.getElementById("remove")
-const list = document.getElementById("list")
 
-addButton.addEventListener("click", () => {
-    const listItem = document.createElement("li")
-    listItem.textContent =  input.value || "New item"
-    list.appendChild(listItem)
-})
+// grab the button
+// event listener click
+// to create an element 
+// add the card-container classname to the element
 
-removeButton.addEventListener("click", () =>{
-    if(list.lastChild) { //unorderedList.lastElementChild {
-        list.removeChild(list.lastChild) //unoerderedList.LastElementChild.remove ()
-    }
-})
+// the content of the created element should be (for now) the first emoji in the array
+// append the element to the div
+
+
