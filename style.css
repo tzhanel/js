@@ -1,47 +1,25 @@
-/* body {
-    background-color: aquamarine;
-}
-h1{
-    color: white; 
-    background-color: purple;
-} 
-
-p{
-    color: whitesmoke;
-    background-color: blue;
-}
-.additional{
-border : 4px groove yellow;
-}
-.switcher {
-    padding: 20 px;
-    border: 4px groove white;
-}
-
-.blue-background {
-    background-color: green;
-} */
- body {
-  background-color: black;
+* {
   color: white;
 }
+button {
+  color:  black;
+}
+body {
+  background-color: black;
+}
 
-.card-container {
+.card {
   width: 120px;
   height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  border: 1px solid white;
-  font-size: 60px;
+  border-radius: 10px;
+  font-size: 40px;
   margin: 10px;
-  color: yellow;
+  color: white;
   cursor: pointer;
   transition: 0.2s;
-  padding: 30px;
-  background-color: green;
-
 }
 
 .card:hover {

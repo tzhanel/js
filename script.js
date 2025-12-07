@@ -1,112 +1,59 @@
-// const myTitle = document.getElementById("title")
+const cards = document.getElementById("cards");
+const btn = document.getElementById("add-card")
+const emojis = ["😀", "😎", "🤓", "😴", "🤖", "👻", "💩", "🌈", "🔥", "✨", "🍕", "⚡️"];
 
-// console.log(myTitle)
+let counter = 0;
 
-// myTitle.innerText = "Title is Updated"
-// myTitle.innerHTML = "NOW IT IS <em>SUPER PRO</em> UPDATED"
+btn.addEventListener("click", () => {
+    const card = document.createElement("div")
+    card.classList.add("card");
+    if (counter >= emojis.length - 1) {
+        counter = 0;
+    }
+    card.textContent = emojis[counter]
+    counter++;
+    cards.appendChild(card)
 
-// myTitle.style.color = "red"
-// myTitle.style.fontSize = "60px"
-
-// myTitle.classList.add("additional")
-
-// const body = document.body
-// console.log(body)
-// body.classList.add("body-class-exp")
-// body.classList.remove("body-class-exp")
-// myTitle.classList.toggle("switcher")
-
-const myParagraphs = document.querySelectorAll(".text")
-
-// console.log(myParagraphs)
-
-// for (let i = 0; i < myParagraphs.length; i++) {
-//   console.log(myParagraphs[i])
-// }
-
-// // const myTitle = document.getElementById("title")
-
-// const newParagraph = document.createElement("p") // <p></p>
-// newParagraph.innerText = "This is added by JS" // <p>This is added by JS</p>
-// newParagraph.setAttribute("class", "text")
-// // < p class="text" > This is added by JS</p >
-// document.body.appendChild(newParagraph)
-// document.body.prepend(newParagraph)
-// const myButton = document.getElementById("btn")
-// document.body.insertBefore(newParagraph, myButton)
-
-
-// // const myParagraphs = document.querySelectorAll(".text")
-// // console.log(myParagraphs)
-
-// // myParagraphs[1].remove()
-
-const btn = document.getElementById("btn")
-// // btn.addEventListener("click", () => {
-// // //   alert("Button clicked!")
-// // myTitle.textContent = "THIS IS CHANGET ON BITTON CLICK"
-
-// //  })
-// btn.addEventListener("mouseenter", () => {
-//     btn.style.backgroundColour = "blue"
-// })
-// btn.addEventListener("mouseleave",() =>{
-//     btn.style.backgroundColor = ""
-// })
-
-const input = document.getElementById("input")
-// const output = document.getElementById("output")
-// inputElement.addEventListener("input", () => {
-//     // output.textContent = 
-//     // console.log("inserted", inputElement.value)
-// })
-// // const thirdParagraph = myParagraphs[2]
-// btn.addEventListener("click", () => {
-//     myParagraphs[1].classList.toggle("blue-background")
-// })
-
-// const addButton = document.getElementById("add")
-// const removeButton = document.getElementById("remove")
-// const list = document.getElementById("list")
-
-// addButton.addEventListener("click", () => {
-//     const listItem = document.createElement("li")
-//     listItem.textContent =  input.value || "New item"
-//     list.appendChild(listItem)
-// })
-
-// removeButton.addEventListener("click", () =>{
-//     if(list.lastChild) { //unorderedList.lastElementChild {
-//         list.removeChild(list.lastChild) //unoerderedList.LastElementChild.remove ()
-//     }
-// })
-
-const emojis = ["a", "b", "c"];
-const addCardBtn = document.getElementById("add-card")
-const cardsContainer = document.getElementById("cards")
-
-addCardBtn.addEventListener("click", () => {
-  const card = document.createElement("div")
-  card.className = "card-container"
-
-  // Math.random/Math.floor
-  const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)]
-
-  card.textContent = randomEmoji // random
-  cardsContainer.appendChild(card)
-
-  card.addEventListener("click", () => {
-    card.remove()
-  })
+    card.addEventListener("click", () => {
+        card.remove();
+    })
 })
 
+async function getData(url) {
+  try {
+    const response = await fetch(url);
+    console.log("response => ", response);
+    const data = await response.json();
+    console.log("data => ", data);
 
-// grab the button
-// event listener click
-// to create an element 
-// add the card-container classname to the element
+    return data;
+} catch (error) {
+  console.log(error)
+}
+}
 
-// the content of the created element should be (for now) the first emoji in the array
-// append the element to the div
+const dogBtn = document.getElementById("dogBtn");
+const catBtn = document.getElementById("catBtn");
+const output = document.getElementById("output");
+dogBtn.addEventListener("click", async () => {
+    const data = await getData("https://dog.ceo/api/breeds/image/random");
+    const img = document.createElement("img");  
+    img.src = data.message;
+    img.style.width = "200px";
+    // output.innerHTML = "";
+    output.appendChild(img);
+}
+);
+catBtn.addEventListener("click", async () => {
+    const data = await getData("https://api.thecatapi.com/v1/images/search");
+    const img = document.createElement("img");
+    img.src = data[0].url;
+    img.style.width = "200px";
+    output.innerHTML = "";
+    output.appendChild(img);
+}
+);
 
 
+// https://dog.ceo/api/breeds/image/random
+// https://api.thecatapi.com/v1/images/search
