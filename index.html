@@ -1,22 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <h2>Mood Cards</h2>
-    <button id="add-card">Add Mood Card</button>
-    <div id="cards" style="margin-top:20px;"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM practice: color picker</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <h2>Color Palette Builder</h2>
 
+    <div class="controls">
+      <input type="color" id="color-picker" value="#7f77dd">
+      <button id="add-btn">Add color</button>
+      <span id="color-count">0 colors saved</span>
+    </div>
 
-    <button id="dogBtn">Get Dogs</button>
-    <button id="catBtn">Get Cats</button>
-    <div id="output"></div>
-
-    
-    <script src="./script.js"></script>
-</body>
+    <div class="swatch-grid" id="swatch-grid"></div>
+  </body>
 </html>
